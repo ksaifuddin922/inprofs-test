@@ -6,6 +6,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import com.aventstack.extentreports.util.Assert;
+
 import base.TestBase;
 import pages.LoginPage;
 
@@ -28,11 +30,10 @@ public class LoginPageTest extends TestBase {
 	@Test
 
 	public void LoginPageGetTitle() throws InterruptedException {
-
-		loginPage.homepageLogin(prop.getProperty("username"),prop.getProperty("password"));
-		String actualRes = loginPage.validateLoginPageTitle();
-//added lines
-		assertEquals(actualRes, "OrangeHRM");
+		loginPage.enterUserName(prop.getProperty("username"));
+		loginPage.enterPassword(prop.getProperty("password"));
+		loginPage.clickOnLogin();
+		assertEquals(driver.getTitle(), "Dashboard");
 	}
 
 	@AfterMethod()

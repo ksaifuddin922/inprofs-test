@@ -9,39 +9,38 @@ import base.TestBase;
 public class LoginPage extends TestBase {
 
 	// Web Elemnets
-	@FindBy(xpath = "//input[@name='username']")
+	@FindBy(name ="username")
 	private WebElement username_txt;
 
-	@FindBy(xpath = "//input[@name='password']")
+	@FindBy(name = "password")
 	private WebElement password_txt;
 
-	@FindBy(xpath = "//button[contains(@class,'oxd-button oxd-button')]")
-	private WebElement login_btn;
+	@FindBy(xpath = "")
+	private WebElement forgotPassword_lnk;
 
-	@FindBy(xpath = "//input[contains(@id,'btnLogin')]")
-	private WebElement ForgotPassowrd_lnk;
+	@FindBy(xpath = "")
+	private WebElement createanAccount_lnk;
+
+	@FindBy(name = "submit")
+	private WebElement login_btn;
 
 	public LoginPage() {
 		PageFactory.initElements(driver, this);
 
 	}
-
 	// page actions
-	public String validateLoginPageTitle() {
-
-		return driver.getTitle();
-
-	}
-
-	public void homepageLogin(String userName, String password) {
+	public void enterUserName(String userName) {
 		username_txt.sendKeys(userName);
+	}
+
+	public void enterPassword(String password) {
 		password_txt.sendKeys(password);
+	}
+
+	public void clickOnLogin() {
 		login_btn.click();
-
 	}
-
-	public void clickOnForgotPassowrd() {
-		ForgotPassowrd_lnk.click();
+	public void clickonForgotPasswordlink() {
+		forgotPassword_lnk.click();
 	}
-
 }
